@@ -1,0 +1,207 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Sticky Header
+   ===================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding-inline: 40px;
+  background: rgba(17, 17, 17, 0.95);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: border-color var(--t-base) var(--ease),
+              background var(--t-base) var(--ease);
+}
+
+.site-header.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(17, 17, 17, 0.99);
+}
+
+/* ── Brand ────────────────────────────────────────── */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header-logo {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--gold-glow));
+}
+
+.header-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.header-brand-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.085em;
+  color: var(--white);
+  line-height: 1;
+}
+
+.header-brand-sub {
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* ── Nav ──────────────────────────────────────────── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-left: auto;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: white;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.nav-link:hover {
+  color: var(--gold);
+}
+
+.nav-link.active {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.nav-cta {
+  margin-left: 12px;
+}
+
+/* ── Mobile hamburger ─────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: auto;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: transform var(--t-base) var(--ease),
+              opacity var(--t-fast) var(--ease);
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile nav drawer ────────────────────────────── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(17, 17, 17, 0.98);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 32px 40px;
+  flex-direction: column;
+  gap: 24px;
+  z-index: calc(var(--z-header) - 1);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--t-base) var(--ease),
+              opacity var(--t-base) var(--ease);
+}
+
+.mobile-nav.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: calc(var(--z-header) - 2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav .nav-link {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  padding-block: 4px;
+}
+
+.mobile-nav .nav-link:hover {
+  color: var(--gold);
+}
+
+.mobile-nav .nav-link.active {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.mobile-nav .btn-primary {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .header-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+}

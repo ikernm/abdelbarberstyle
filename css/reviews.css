@@ -1,0 +1,285 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Reviews Section
+   ===================================================== */
+
+.section-reviews {
+  padding-block: var(--section-py);
+  background: #0d0d0d;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-reviews .section-heading {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* ── Grid ─────────────────────────────────────────── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+/* ── Card ─────────────────────────────────────────── */
+.review-card {
+  position: relative;
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.09);
+  padding: 40px 36px 36px;
+  transition: background var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease),
+              transform var(--t-fast) var(--ease);
+  overflow: hidden;
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-base) var(--ease);
+}
+
+.review-card:hover,
+.js .review-card.reveal.visible:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border);
+  transform: scale(0.97);
+}
+
+.review-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Quote mark ───────────────────────────────────── */
+.review-quote-mark {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 300;
+  color: rgba(201, 151, 58, 0.1);
+  line-height: 1;
+  pointer-events: none;
+  transition: color var(--t-base) var(--ease);
+}
+
+.review-card:hover .review-quote-mark {
+  color: rgba(201, 151, 58, 0.18);
+}
+
+/* ── Stars ────────────────────────────────────────── */
+.review-stars {
+  margin-bottom: 20px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+/* ── Text ─────────────────────────────────────────── */
+.review-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+/* ── Author ───────────────────────────────────────── */
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-avatar span {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.review-author-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.03em;
+}
+
+.review-author-date {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ── Carousel fade ────────────────────────────────── */
+.reviews-grid {
+  transition: opacity 0.28s ease;
+}
+.reviews-grid.fading {
+  opacity: 0;
+}
+
+/* ── Nav controls ─────────────────────────────────── */
+.reviews-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.reviews-btn-prev,
+.reviews-btn-next {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gold);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+
+.reviews-btn-prev:hover:not(:disabled),
+.reviews-btn-next:hover:not(:disabled) {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+.reviews-btn-prev:disabled,
+.reviews-btn-next:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.reviews-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.reviews-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transform: rotate(45deg);
+  transition: background var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease);
+  padding: 0;
+}
+
+.reviews-dot.active {
+  background: var(--gold);
+  transform: rotate(45deg) scale(1.3);
+}
+
+/* ── Link ─────────────────────────────────────────── */
+.reviews-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.reviews-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease);
+}
+
+.reviews-link::after {
+  content: '→';
+  transition: transform var(--t-fast) var(--ease);
+}
+
+.reviews-link:hover {
+  color: var(--gold-hover);
+}
+
+.reviews-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* ── Reveal delays (6 cards, 2 rows) ──────────────── */
+.reviews-grid .reveal:nth-child(1) { transition-delay: 0s; }
+.reviews-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reviews-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+.reviews-grid .reveal:nth-child(4) { transition-delay: 0.1s; }
+.reviews-grid .reveal:nth-child(5) { transition-delay: 0.2s; }
+.reviews-grid .reveal:nth-child(6) { transition-delay: 0.3s; }
+
+/* ── Animación flotante en la comilla decorativa ──── */
+@keyframes quote-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.review-card.visible .review-quote-mark {
+  animation: quote-float 5s ease-in-out infinite;
+  animation-delay: calc(var(--card-i, 0) * 0.8s);
+}
+
+.reviews-grid .review-card:nth-child(1) { --card-i: 0; }
+.reviews-grid .review-card:nth-child(2) { --card-i: 1; }
+.reviews-grid .review-card:nth-child(3) { --card-i: 2; }
+.reviews-grid .review-card:nth-child(4) { --card-i: 3; }
+.reviews-grid .review-card:nth-child(5) { --card-i: 4; }
+.reviews-grid .review-card:nth-child(6) { --card-i: 5; }
+
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}

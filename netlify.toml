@@ -1,0 +1,27 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Fuerza HTTPS y lo mantiene 1 año
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # Evita que la web se incruste en iframes de otros sitios (clickjacking)
+    X-Frame-Options = "SAMEORIGIN"
+
+    # El navegador no adivina el tipo de fichero (sniffing)
+    X-Content-Type-Options = "nosniff"
+
+    # Solo envía el origen (sin path) al navegar a sitios externos
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Desactiva APIs sensibles que esta web no necesita
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+    # Controla qué orígenes externos puede cargar la página
+    # - style-src:  hoja de estilos de Google Fonts
+    # - font-src:   ficheros de fuente de Google Fonts
+    # - frame-src:  iframe del mapa de Google Maps
+    # - img-src:    imágenes locales + data URIs
+    # - script-src: solo scripts locales
+    # Si en el futuro se añade widget de Fresha, agregar a frame-src:
+    #   https://www.fresha.com
+    Content-Security-Policy = "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://maps.google.com https://www.google.com; img-src 'self' data:; script-src 'self'; connect-src 'self'"

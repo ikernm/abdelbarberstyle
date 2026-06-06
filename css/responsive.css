@@ -1,0 +1,244 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Responsive (Mobile / Tablet)
+   ===================================================== */
+
+/* ── Tablet: ≤ 1024px ─────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --container-pad: 40px;
+  }
+
+  /* Header */
+  .header-nav {
+    gap: 24px;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .gallery-item:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 2; min-height: 300px; }
+  .gallery-item:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; min-height: 300px; }
+  .gallery-item:nth-child(3) { grid-column: 1 / 2; grid-row: 2 / 3; min-height: 260px; }
+  .gallery-item:nth-child(4) { grid-column: 2 / 3; grid-row: 2 / 3; min-height: 260px; }
+  .gallery-item:nth-child(5) { grid-column: 1 / 2; grid-row: 3 / 4; min-height: 260px; }
+  .gallery-item:nth-child(6) { grid-column: 2 / 3; grid-row: 3 / 4; min-height: 260px; }
+
+  /* About */
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image-wrap {
+    order: -1;
+  }
+
+  .about-image-frame {
+    max-height: 400px;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Booking */
+  .booking-card {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .footer-links {
+    gap: 16px;
+  }
+}
+
+/* ── Mobile: ≤ 768px ──────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 24px;
+    --section-py: 72px;
+  }
+
+  /* Header — show hamburger, hide desktop nav */
+  .header-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .site-header {
+    padding-inline: 24px;
+  }
+
+  /* Mobile nav drawer becomes visible */
+  .mobile-nav {
+    display: flex;
+    padding: 24px;
+  }
+
+  /* Hero */
+  .hero-heading {
+    font-size: clamp(40px, 10vw, 56px);
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Section overline */
+  .section-overline::before,
+  .section-overline::after {
+    width: 40px;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .gallery-item:nth-child(n) {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+    min-height: 240px !important;
+  }
+
+  /* About */
+  .about-image-frame {
+    aspect-ratio: 4 / 3;
+    max-height: 320px;
+  }
+
+  .about-badge {
+    width: 72px;
+    height: 72px;
+    bottom: -12px;
+    left: -12px;
+  }
+
+  .about-badge-num {
+    font-size: 22px;
+  }
+
+  .about-image-wrap::before,
+  .about-image-wrap::after {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Booking */
+  .booking-panel {
+    padding: 32px 24px;
+  }
+
+  /* Schedule */
+  .schedule-row {
+    padding: 16px 20px;
+  }
+
+  .schedule-day {
+    font-size: 15px;
+    min-width: 90px;
+  }
+
+  .schedule-hours {
+    font-size: 11px;
+  }
+
+  /* Footer */
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-link.highlight {
+    align-self: flex-start;
+  }
+}
+
+/* ── Small mobile: ≤ 480px ────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --container-pad: 16px;
+    --section-py: 56px;
+  }
+
+  .site-header {
+    padding-inline: 16px;
+    height: 64px;
+  }
+
+  .mobile-nav {
+    top: 64px;
+    padding: 20px 16px;
+  }
+
+  .section-heading {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .hero-logo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .service-card {
+    padding: 32px 24px 28px;
+  }
+
+  .review-card {
+    padding: 32px 24px 28px;
+  }
+
+  .schedule-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .schedule-separator {
+    display: none;
+  }
+
+  .schedule-day {
+    min-width: unset;
+    flex: 1;
+  }
+}

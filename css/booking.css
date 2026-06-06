@@ -1,0 +1,169 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Booking & Contact Section
+   ===================================================== */
+
+.section-booking {
+  padding-block: var(--section-py);
+  background: #F5F0E8;
+  border-top: 1px solid rgba(17,17,17,0.08);
+}
+
+.section-booking .section-heading {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  color: #111111;
+}
+
+.section-booking .section-overline {
+  color: var(--gold);
+}
+
+/* ── Main card ────────────────────────────────────── */
+.booking-card {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  border: 1px solid rgba(17,17,17,0.12);
+}
+
+/* ── Panel base ───────────────────────────────────── */
+.booking-panel {
+  padding: clamp(40px, 5vw, 60px) clamp(32px, 4vw, 56px);
+}
+
+.booking-panel-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.booking-panel-heading {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 300;
+  line-height: 1.18;
+  color: #111111;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+/* ── Left: Booking ────────────────────────────────── */
+.booking-left {
+  background: #EDE8DF;
+  border-right: 1px solid rgba(17,17,17,0.12);
+}
+
+.booking-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-btn-fresha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  background: var(--gold);
+  color: #111111;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease),
+              box-shadow var(--t-fast) var(--ease);
+}
+
+.booking-btn-fresha:hover {
+  background: var(--gold-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--gold-glow);
+}
+
+.booking-btn-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 44px;
+  color: #111111;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(17,17,17,0.12);
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.booking-btn-phone:hover {
+  color: var(--gold);
+}
+
+.booking-btn-phone svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── Right: Location ──────────────────────────────── */
+.booking-right {
+  background: #F5F0E8;
+}
+
+.booking-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.booking-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.booking-info-item svg {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.booking-info-item p,
+.booking-info-item a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(17,17,17,0.65);
+  letter-spacing: 0.02em;
+  transition: color var(--t-fast) var(--ease);
+}
+
+.booking-info-item a:hover {
+  color: var(--gold);
+}
+
+/* ── Map — spans both columns ─────────────────────── */
+.booking-map {
+  grid-column: 1 / -1;
+  height: 280px;
+  border-top: 1px solid rgba(17,17,17,0.12);
+  overflow: hidden;
+}
+
+.booking-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

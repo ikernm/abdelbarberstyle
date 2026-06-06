@@ -1,0 +1,134 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Gallery Section
+   ===================================================== */
+
+.section-gallery {
+  padding-block: var(--section-py);
+  background: var(--bg);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.section-gallery .section-heading {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* ── Masonry-style grid ───────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 3px;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Grid placement matching Figma layout */
+.gallery-item:nth-child(1) { grid-column: 1 / 8;  grid-row: 1 / 3; }
+.gallery-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1 / 2; }
+.gallery-item:nth-child(3) { grid-column: 8 / 13; grid-row: 2 / 3; }
+.gallery-item:nth-child(4) { grid-column: 1 / 5;  grid-row: 3 / 5; }
+.gallery-item:nth-child(5) { grid-column: 5 / 9;  grid-row: 3 / 5; }
+.gallery-item:nth-child(6) { grid-column: 9 / 13; grid-row: 3 / 5; }
+
+/* ── Item ─────────────────────────────────────────── */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  aspect-ratio: unset;
+}
+
+.gallery-item:nth-child(1) { min-height: 420px; }
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3) { min-height: 208px; }
+.gallery-item:nth-child(4),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(6) { min-height: 320px; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--t-slow) var(--ease),
+              filter var(--t-slow) var(--ease);
+  filter: brightness(0.85);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1);
+}
+
+/* ── Overlay on hover ─────────────────────────────── */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    transparent 60%
+  );
+  opacity: 0.7;
+  transition: opacity var(--t-base) var(--ease);
+  pointer-events: none;
+}
+
+.gallery-item:hover::after {
+  opacity: 0.3;
+}
+
+/* ── Caption ──────────────────────────────────────── */
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 1;
+  transform: translateY(4px);
+  transition: transform var(--t-base) var(--ease);
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+.gallery-caption span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Placeholder (cuando no hay imagen real) ──────── */
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-dim);
+}
+
+.gallery-placeholder svg {
+  color: var(--gold-dim);
+  opacity: 0.5;
+}
+
+.gallery-placeholder span {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

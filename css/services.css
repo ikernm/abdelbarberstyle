@@ -1,0 +1,135 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Services Section
+   ===================================================== */
+
+.section-services {
+  padding-block: var(--section-py);
+  background: #F5F0E8;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-services .section-heading {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  color: #111111;
+}
+
+/* ── Grid ─────────────────────────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 0;
+}
+
+/* ── Card ─────────────────────────────────────────── */
+.service-card {
+  position: relative;
+  background: #181818;
+  padding: 40px 36px 36px;
+  border: 1px solid rgba(255,255,255,0.09);
+  transition: background var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease),
+              transform var(--t-base) var(--ease);
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform var(--t-base) var(--ease);
+  transform-origin: left;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    108deg,
+    transparent 35%,
+    rgba(201, 151, 58, 0.07) 50%,
+    transparent 65%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transition-delay: 0s;
+  background: var(--bg-card-hover);
+  border-color: rgba(201, 151, 58, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+              0 4px 16px rgba(201, 151, 58, 0.1);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover::after {
+  transform: translateX(110%);
+}
+
+/* ── Icon ─────────────────────────────────────────── */
+.service-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 24px;
+  transition: transform var(--t-base) var(--ease),
+              filter var(--t-base) var(--ease);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.14);
+  filter: drop-shadow(0 0 8px rgba(201, 151, 58, 0.55));
+}
+
+/* ── Name ─────────────────────────────────────────── */
+.service-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+  transition: color var(--t-base) var(--ease);
+}
+
+.service-card:hover .service-name {
+  color: rgb(255, 248, 232);
+}
+
+/* ── Description ──────────────────────────────────── */
+.service-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ── Reveal delays ────────────────────────────────── */
+.services-grid .service-card:nth-child(1) { transition-delay: 0s; }
+.services-grid .service-card:nth-child(2) { transition-delay: 0.05s; }
+.services-grid .service-card:nth-child(3) { transition-delay: 0.1s; }
+.services-grid .service-card:nth-child(4) { transition-delay: 0.15s; }
+.services-grid .service-card:nth-child(5) { transition-delay: 0.2s; }
+.services-grid .service-card:nth-child(6) { transition-delay: 0.25s; }
+
+.services-grid .reveal:nth-child(1) { transition-delay: 0s; }
+.services-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+.services-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+.services-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+.services-grid .reveal:nth-child(5) { transition-delay: 0.32s; }
+.services-grid .reveal:nth-child(6) { transition-delay: 0.40s; }

@@ -1,0 +1,208 @@
+/* =====================================================
+   ABDEL BARBER STYLE — Hero Section
+   ===================================================== */
+
+.section-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  /* Capa oscura + foto de fondo en una sola propiedad: sin z-index conflict */
+  background-image:
+    linear-gradient(rgba(10, 8, 5, 0.82), rgba(10, 8, 5, 0.82)),
+    url(./assets/images/galery-1.png);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg);
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+/* ── Subtle grid pattern (from Figma gradient) ────── */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(0deg,
+      transparent 0%,
+      transparent 6.58%,
+      rgba(201, 151, 58, 0.035) 6.58%,
+      rgba(201, 151, 58, 0.035) 6.67%,
+      transparent 6.67%
+    ),
+    linear-gradient(90deg,
+      transparent 0%,
+      transparent 4.11%,
+      rgba(201, 151, 58, 0.035) 4.11%,
+      rgba(201, 151, 58, 0.035) 4.17%,
+      transparent 4.17%
+    );
+  pointer-events: none;
+}
+
+/* ── Radial vignette ──────────────────────────────── */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 70% at 50% 50%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Content ──────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 560px;
+  padding-inline: 24px;
+}
+
+/* ── Logo ─────────────────────────────────────────── */
+.hero-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 28px;
+  filter: drop-shadow(0 0 18px var(--gold-glow));
+  animation: hero-logo-in 0.9s var(--ease-out) both;
+}
+
+@keyframes hero-logo-in {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Overline ─────────────────────────────────────── */
+.hero-overline {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  animation: hero-text-in 0.7s 0.2s var(--ease-out) both;
+}
+
+/* ── Heading ──────────────────────────────────────── */
+.hero-heading {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 8px;
+  animation: hero-text-in 0.7s 0.32s var(--ease-out) both;
+}
+
+.hero-heading em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+/* ── Subheading ───────────────────────────────────── */
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  max-width: 440px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  animation: hero-text-in 0.7s 0.44s var(--ease-out) both;
+}
+
+/* ── Rating ───────────────────────────────────────── */
+.hero-rating {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 36px;
+  animation: hero-text-in 0.7s 0.52s var(--ease-out) both;
+}
+
+/* ── CTAs ─────────────────────────────────────────── */
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: hero-text-in 0.7s 0.62s var(--ease-out) both;
+}
+
+/* ── Scroll indicator ─────────────────────────────── */
+.hero-scroll {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: hero-text-in 1s 1.2s var(--ease-out) both;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.hero-scroll.hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-scroll span {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+@media (max-width: 1024px) {
+  .hero-scroll {
+    bottom: 8px;
+  }
+  .hero-scroll-line {
+    height: 32px;
+  }
+  .hero-scroll span {
+    display: none;
+  }
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scroll-pulse 2s 1.8s var(--ease) infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50%       { transform: scaleY(0.6); opacity: 1; }
+}
+
+@keyframes hero-text-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
