@@ -11,7 +11,7 @@
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  /* Capa oscura + foto de fondo en una sola propiedad: sin z-index conflict */
+  /* Fallback: se muestra si el vídeo no carga o prefers-reduced-motion */
   background-image:
     linear-gradient(rgba(10, 8, 5, 0.82), rgba(10, 8, 5, 0.82)),
     url(./assets/images/galery-1.png);
@@ -22,10 +22,36 @@
   padding-bottom: 72px;
 }
 
+/* ── Vídeo de fondo ────────────────────────────────── */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ── Capa oscura sobre el vídeo ───────────────────── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 5, 0.72);
+  z-index: 1;
+}
+
+/* Sin movimiento: oculta el vídeo y usa el fallback estático */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+}
+
 /* ── Subtle grid pattern (from Figma gradient) ────── */
 .hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background-image:
     linear-gradient(0deg,
       transparent 0%,
@@ -48,6 +74,7 @@
 .hero-vignette {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background: radial-gradient(
     ellipse 60% 70% at 50% 50%,
     transparent 20%,
@@ -59,7 +86,7 @@
 /* ── Content ──────────────────────────────────────── */
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,6 +181,7 @@
   bottom: 48px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
